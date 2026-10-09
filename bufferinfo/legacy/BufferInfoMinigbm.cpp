@@ -71,7 +71,7 @@ auto BufferInfoMinigbm::GetBoInfo(buffer_handle_t handle)
   }
 
   uint32_t usage{};
-  if (gralloc_->perform(gralloc_, CROS_GRALLOC_DRM_GET_USAGE, handle, &usage) !=
+  if (gralloc_->perform(gralloc_, CROS_GRALLOC_DRM_GET_USAGE, 0U, &usage) !=
       0) {
     ALOGE(
         "CROS_GRALLOC_DRM_GET_USAGE operation has failed. "
