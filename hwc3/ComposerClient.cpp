@@ -497,8 +497,10 @@ ComposerClient::~ComposerClient() {
   DEBUG_FUNC();
   stats_poller_.reset();
   if (hwc_) {
-    const std::unique_lock lock(hwc_->GetResMan().GetMainLock());
-    hwc_->DeinitDisplays();
+    {
+      const std::unique_lock lock(hwc_->GetResMan().GetMainLock());
+      hwc_->DeinitDisplays();
+    }
     hwc_.reset();
   }
   ALOGD("removed composer client");
